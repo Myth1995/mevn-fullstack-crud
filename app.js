@@ -17,7 +17,7 @@ mongoose.connect(database.db, {
   }
 )
 
-const clientAPI = require('../backend/routes/client.route')
+const clientAPI = require('./routes/client.route')
 //const providerAPI = require('../backend/routes/provider.route')
 const app = express();
 app.use(bodyParser.json());
