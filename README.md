@@ -18,8 +18,17 @@ And server start.
 npm run serve
 ```
 
+Second, run mongo db
 
-Second, run express server.
+- download and setup mongodb.
+- run mongodb server
+  run cmd and input mongod.
+  ```
+  mongod
+  ```
+
+
+And next, run express server.
 
 
 ```
