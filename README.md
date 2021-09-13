@@ -13,7 +13,7 @@ or
 yarn install
 ```
 
-And run serve.
+And server start.
 ```
 npm run serve
 ```
