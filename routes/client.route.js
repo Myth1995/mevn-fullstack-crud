@@ -5,18 +5,7 @@ const clientRoute = express.Router();
 let clientModel = require('../models/Client');
 let providerModel = require('../models/Provider');
 
-clientRoute.route('/provider').get((req, res, next) => {
-    providerModel.find((error, data) => {
-     if (error) {
-      console.log("Get Providers error: " + error)
-       return next(error)
-     } else {
-      console.log("Get Providers error: " + error)
-       res.json(data)
-     }
-   })
- })
-
+// Client api
 clientRoute.route('/create-client').post((req, res, next) => {
   clientModel.create(req.body, (error, data) => {
   if (error) {
@@ -73,5 +62,45 @@ clientRoute.route('/delete-client/:id').delete((req, res, next) => {
     }
   })
 })
+
+
+//Provider api
+clientRoute.route('/provider').get((req, res, next) => {
+    providerModel.find((error, data) => {
+     if (error) {
+      console.log("Get Providers error: " + error)
+       return next(error)
+     } else {
+       res.json(data)
+     }
+   }).sort({"id": 1})
+ })
+
+// Delete
+clientRoute.route('/delete-provider/:id').delete((req, res, next) => {
+  providerModel.findByIdAndRemove(req.params.id, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.status(200).json({
+        msg: data
+      })
+    }
+  })
+})
+
+clientRoute.route('/update-provider/:id').put((req, res, next) => {
+  clientModel.findByIdAndUpdate(req.params.id, {
+    $set: req.body
+  }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.json(data)
+      console.log('Client successfully updated!')
+    }
+  })
+})
+
 
 module.exports = clientRoute;

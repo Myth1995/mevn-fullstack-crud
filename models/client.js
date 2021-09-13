@@ -11,6 +11,12 @@ let clientSchema = new Schema({
   phone: {
     type: Number
   },
+  providers: {
+  	type: Array
+  },
+  providers_string: {
+  	type: String
+  }
 }, {
   collection: 'clients'
 })
